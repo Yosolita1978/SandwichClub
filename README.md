@@ -24,3 +24,6 @@ Download the [Sandwich Club app starter code.](https://github.com/udacity/sandwi
 Design the layout for the detail activity so the different elements
 display in a sensible way. Implement the JSON parsing in JsonUtils so it
 produces a Sandwich Object that can be used to populate the UI that you designed.
+
+# Author
+Hi! My name is Cristina Rodriguez and I am a software engineer. I received training from Hackbright Academy, an engineering bootcamp for women in San Francisco (graduation: March 2017). I'm now a recipient of the 2018 Grow Scholarship from Google and Udacity for Android Basics. I used to work as a project manager in a software company and there I got interested in learning Python and being able to create my own software projects. I'm currently seeking a front-end developer role in the Greater Seattle Area. If you have a role that I should hear about, feel free to email yosola at gmail.
