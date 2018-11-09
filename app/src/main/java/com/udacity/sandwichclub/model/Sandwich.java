@@ -26,6 +26,7 @@ public class Sandwich {
         this.ingredients = ingredients;
     }
 
+
     public String getMainName() {
         return mainName;
     }
@@ -73,4 +74,5 @@ public class Sandwich {
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+
 }

@@ -16,11 +16,11 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    Sandwich mSandwich;
-    TextView mOrigin;
-    TextView mAlsoKnown;
-    TextView mDescription;
-    TextView mIngredients;
+    private Sandwich mSandwich;
+    private TextView mOrigin;
+    private TextView mAlsoKnown;
+    private TextView mDescription;
+    private TextView mIngredients;
 
 
 

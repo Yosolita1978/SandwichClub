@@ -9,19 +9,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class JsonUtils {
 
-    //Create all the variables in the Sandwich Class
-    static String mainName;
-    static List<String> alsoKnownAs = new ArrayList<String>();
-    static String placeOfOrigin;
-    static String description;
-    static String image;
-    static List<String> ingredients = new ArrayList<String>();
+    //Create all the variables in the Sandwich Json
+
+    private static final String NAME = "name";
+    private static final String MAIN_NAME = "mainName";
+    private static final String ALSO_KNOWN_AS = "alsoKnownAs";
+    private static final String PLACE_OF_ORIGIN = "placeOfOrigin";
+    private static final String DESCRIPTION = "description";
+    private static final String IMAGE = "image";
+    private static final String INGREDIENTS = "ingredients";
 
     //For debugging reasons
+
     private static String TAG = JsonUtils.class.toString();
 
 
@@ -29,40 +31,34 @@ public class JsonUtils {
 
     public static Sandwich parseSandwichJson(String json) {
 
-
         try {
-            JSONObject sandwichJson = new JSONObject(json);
+            JSONObject jsonData = new JSONObject(json);
 
-            JSONObject name = sandwichJson.getJSONObject("name");
+            JSONObject names = jsonData.getJSONObject(NAME);
 
-            mainName = name.getString("mainName");
+            String mainName = names.getString(MAIN_NAME);
 
-            JSONArray alsoKnown = name.getJSONArray("alsoKnownAs");
+            JSONArray alsoKnownAsJsonArray = names.getJSONArray(ALSO_KNOWN_AS);
 
-            for (int i = 0; i < alsoKnown.length(); i++) {
-                if (i == alsoKnown.length() - 1) {
-                    alsoKnownAs.add(alsoKnown.getString(i) + ".");
-
-                } else {
-                    alsoKnownAs.add(alsoKnown.getString(i) + " , ");
-
-                }
+            ArrayList<String> alsoKnownAs = new ArrayList<>();
+            for (int i = 0; i < alsoKnownAsJsonArray.length(); i++) {
+                alsoKnownAs.add(alsoKnownAsJsonArray.getString(i));
             }
-            placeOfOrigin = sandwichJson.getString("placeOfOrigin");
 
-            description = sandwichJson.getString("description");
+            String placeOfOrigin = jsonData.getString(PLACE_OF_ORIGIN);
 
-            image = sandwichJson.getString("image");
+            String description = jsonData.getString(DESCRIPTION);
 
-            JSONArray mIngredients = sandwichJson.getJSONArray("ingredients");
+            String image = jsonData.getString(IMAGE);
 
-            for (int x = 0; x < mIngredients.length(); x++) {
-                if (x == mIngredients.length() - 1) {
-                    ingredients.add(mIngredients.getString(x) + ".");
-                } else {
-                    ingredients.add(mIngredients.getString(x) + " , ");
-                }
+            JSONArray ingredientsJsonArray = jsonData.getJSONArray(INGREDIENTS);
+
+            ArrayList<String> ingredients = new ArrayList<>();
+            for (int i = 0; i < ingredientsJsonArray.length(); i++) {
+                ingredients.add(ingredientsJsonArray.getString(i));
             }
+
+            return new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
 
 
         } catch (JSONException e) {
@@ -70,7 +66,6 @@ public class JsonUtils {
             e.printStackTrace();
         }
 
-
-        return new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
+        return null;
     }
 }
